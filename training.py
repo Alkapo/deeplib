@@ -76,14 +76,14 @@ def validate_ranking(model, val_loader, use_gpu=True):
     return good, errors
 
 
-def train(model, optimizer, dataset, n_epoch, batch_size, use_gpu=True, scheduler=None, criterion=None):
+
+def train(model, optimizer, train_loader,val_loader, n_epoch, batch_size, use_gpu=True, scheduler=None, criterion=None):
     history = History()
 
     if criterion is None:
         criterion = nn.CrossEntropyLoss()
-
-    dataset.transform = ToTensor()
-    train_loader, val_loader = train_valid_loaders(dataset, batch_size=batch_size)
+#    dataset.transform = ToTensor()
+#    train_loader, val_loader = train_valid_loaders(dataset, batch_size=batch_size)
 
     for i in range(n_epoch):
         start = time.time()
